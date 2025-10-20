@@ -9,6 +9,7 @@ var
    linha : caractere
 
 // --- Procedimentos utilitários ---
+//eu não sei oq eu estou fazendo: bernardo 2025
 
 procedimento registrarUsuario()
 inicio
@@ -216,4 +217,5 @@ inicio
 
 
 fimalgoritmo
+
 
