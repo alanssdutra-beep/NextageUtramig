@@ -98,6 +98,7 @@ inicio
       escreval("*     pontos resetados       *")
       escreval("*                            *")
       escreval("******************************")
+//farley e um merda 
 //minha mutança a cima
       escreval("A resposta correta era ", resultado)
    fimse
