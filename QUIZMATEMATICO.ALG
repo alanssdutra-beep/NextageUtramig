@@ -1,5 +1,5 @@
 algoritmo "QuizMatematicoAvancado"
-// Vers„o reorganizada com mais procedimentos e um "banco de dados" simples baseado em arquivo
+// Vers√£o reorganizada com mais procedimentos e um "banco de dados" simples baseado em arquivo
 // OBS: adapte as chamadas de arquivo (abrir/escrever/ler/fechar) ao seu interpretador Portugol/compilador.
 
 var
@@ -8,7 +8,7 @@ var
    resultado, numum, numdois : inteiro
    linha : caractere
 
-// --- Procedimentos utilit·rios ---
+// --- Procedimentos utilit√°rios ---
 
 procedimento registrarUsuario()
 inicio
@@ -22,12 +22,12 @@ fimprocedimento
 procedimento limparTela()
 inicio
    // Dependendo do ambiente, pode usar comandos para limpar a tela.
-   // Aqui sÛ imprimimos linhas em branco para "separar".
+   // Aqui s√≥ imprimimos linhas em branco para "separar".
    escreval("")
-   escreval("--------------------------------------------------")
+   escreval("------------------------------------------------")
 fimprocedimento
 
-// Gera dois n˙meros conforme o nÌvel
+// Gera dois n√∫meros conforme o n√≠vel
 procedimento gerarNumeros(nivel: inteiro; var num1: inteiro; var num2: inteiro)
 inicio
    escolha nivel
@@ -46,7 +46,7 @@ inicio
    fimescolha
 fimprocedimento
 
-// Define operaÁ„o aleatÛria e calcula resultado
+// Define opera√ß√£o aleat√≥ria e calcula resultado
 procedimento definirOperacao(var num1: inteiro; var num2: inteiro; var operador: caractere; var resultado: inteiro)
 inicio
    escolha randi(4)
@@ -60,17 +60,17 @@ inicio
       operador <- "*"
       resultado <- num1 * num2
    caso 3
-      // garantir divisor n„o-zero
+      // garantir divisor n√£o-zero
       enquanto num2 = 0 faca
          num2 <- randi(10) + 1
       fimenquanto
       operador <- "/"
-      resultado <- num1 div num2  // divis„o inteira
+      resultado <- num1 div num2  // divis√£o inteira
    fimescolha
 fimprocedimento
 
 // --- Banco de dados simples (arquivo) ---
-// ObservaÁ„o: as funÁıes de arquivo abaixo s„o placeholders.
+// Observa√ß√£o: as fun√ß√µes de arquivo abaixo s√£o placeholders.
 // Substitua por abrirArquivoRead/Write/Append, lerLinha, etc., conforme seu ambiente.
 
 procedimento salvarPontuacaoArquivo(nome: caractere; pts: inteiro)
@@ -81,36 +81,36 @@ inicio
    // arquivo <- abrir("pontuacoes.txt", "a")
    // escrevaArquivo(arquivo, nome, ";", pts, "\n")
    // fechar(arquivo)
-   escreval("[DEBUG] Salvando pontuaÁ„o: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
+   escreval("[DEBUG] Salvando pontua√ß√£o: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
 fimprocedimento
 
 procedimento mostrarRanking()
 var arquivoConteudo: caractere
 inicio
-   escreval("+------------------------+")
-   escreval("¶       RANKING         ¶")
-   escreval("+------------------------+")
-   // Ler o arquivo pontuacoes.txt e mostrar linhas ordenadas È recomendado.
-   // Aqui exibimos uma mensagem de placeholder e instruÁ„o para implementaÁ„o.
+   escreval("+-------------------------+")
+   escreval("¬¶        RANKING          ¬¶")
+   escreval("+-------------------------+")
+   // Ler o arquivo pontuacoes.txt e mostrar linhas ordenadas √© recomendado.
+   // Aqui exibimos uma mensagem de placeholder e instru√ß√£o para implementa√ß√£o.
    escreval("(Implemente leitura do arquivo 'pontuacoes.txt' e ordene por pontos para mostrar o ranking.)")
    escreval("+------------------------+")
 fimprocedimento
 
-// --- Interface e exibiÁ„o ---
+// --- Interface e exibi√ß√£o ---
 
 procedimento mostrarMenuPrincipal()
 inicio
    limparTela()
    escreval("+----------------------------------+")
-   escreval("¶          Nextage Alan            ¶")
-   escreval("¶----------------------------------¶")
-   escreval("¶ 1 - Jogar                        ¶")
-   escreval("¶ 2 - Ver PontuaÁ„o                ¶")
-   escreval("¶ 3 - Ver Ranking (arquivo)        ¶")
-   escreval("¶ 4 - Registrar/Alterar Jogador    ¶")
-   escreval("¶ 5 - Sair                         ¶")
+   escreval("¬¶          Nextage alan            ¬¶")
+   escreval("¬¶----------------------------------¬¶")
+   escreval("¬¶ 1 - Jogar                        ¬¶")
+   escreval("¬¶ 2 - Ver Pontua√ß√£o                ¬¶")
+   escreval("¬¶ 3 - Ver Ranking (arquivo)        ¬¶")
+   escreval("¬¶ 4 - Registrar/Alterar Jogador    ¬¶")
+   escreval("¬¶ 5 - Sair                         ¬¶")
    escreval("+----------------------------------+")
-   escreva("Escolha uma opÁ„o: ")
+   escreva("Escolha uma op√ß√£o: ")
    leia(opcao)
    limpatela()
 fimprocedimento
@@ -118,34 +118,34 @@ fimprocedimento
 procedimento mostrarPontuacao(pontos: inteiro; nome: caractere)
 inicio
    escreval("+----------------------------------+")
-   escreval("¶    PLACAR ATUAL                  ¶")
-   escreval("¶----------------------------------¶")
-   escreval("¶                                  ¶")
-   escreval("¶", nome, " - ", pontos, " ponto(s)¶")
-   escreval("¶                                  ¶")
+   escreval("¬¶    PLACAR ATUAL                  ¬¶")
+   escreval("¬¶----------------------------------¬¶")
+   escreval("¬¶                                  ¬¶")
+   escreval("¬¶", nome, " - ", pontos, " ponto(s)¬¶")
+   escreval("¬¶                                  ¬¶")
    escreval("+----------------------------------+")
    limpatela()
 fimprocedimento
 
-// --- LÛgica do jogo ---
+// --- L√≥gica do jogo ---
 
 procedimento jogar()
 var perguntas, acertos: inteiro
 inicio
    limparTela()
-   escreval("Escolha o nÌvel de dificuldade:")
-   escreval("1 - F·cil (n˙meros de 1 a 10)")
-   escreval("2 - MÈdio (n˙meros de 10 a 50)")
-   escreval("3 - DifÌcil (n˙meros de 50 a 100)")
-   escreva("NÌvel: ")
+   escreval("Escolha o n√≠vel de dificuldade:")
+   escreval("1 - F√°cil (n√∫meros de 1 a 10)")
+   escreval("2 - M√©dio (n√∫meros de 10 a 50)")
+   escreval("3 - Dif√≠cil (n√∫meros de 50 a 100)")
+   escreva("N√≠vel: ")
    leia(nivel)
    se (nivel < 1) ou (nivel > 3) entao
-      escreval("NÌvel inv·lido. Voltando ao menu.")
+      escreval("N√≠vel inv√°lido. Voltando ao menu.")
       retorne
    fimse
 
-   // Permitir v·rias perguntas por sess„o
-   perguntas <- 3  // n˙mero de perguntas por rodada (pode tornar configur·vel)
+   // Permitir v√°rias perguntas por sess√£o
+   perguntas <- 3 // n√∫mero de perguntas por rodada (pode tornar configur√°vel)
    acertos <- 0
 
    mod i de 1 ate perguntas faca
@@ -170,12 +170,12 @@ inicio
          escreval("A resposta correta era ", resultado)
          // opcional: zerar pontos em caso de erro
          pontos <- 0
-         // VocÍ pode optar por terminar a rodada ao errar:
+         // Voc√™ pode optar por terminar a rodada ao errar:
          // pare
       fimse
     limpatela()
    escreval("Fim da rodada. Acertos nesta rodada: ", acertos, " de ", perguntas)
-   // Persistir pontuaÁ„o no "banco"
+   // Persistir pontua√ß√£o no "banco"
    salvarPontuacaoArquivo(usuario, pontos)
 fimprocedimento
 
@@ -185,7 +185,7 @@ inicio
    usuario <- "Jogador"
    continuar <- "S"
 
-   // perguntar nome inicialmente
+ // perguntar nome inicialmente
    registrarUsuario()
 
    enquanto (continuar = "S") ou (continuar = "s") faca
@@ -201,9 +201,9 @@ inicio
       caso 4
          registrarUsuario()
       caso 5
-         escreval("Obrigado por jogar! AtÈ logo.")
+         escreval("Obrigado por jogar! At√© logo.")
       outrocaso
-         escreval("OpÁ„o inv·lida. Tente novamente.")
+         escreval("Op√ß√£o inv√°lida. Tente novamente.")
       fimescolha
 
       se opcao <> 5 entao
@@ -213,5 +213,6 @@ inicio
          continuar <- "N"
       fimse
    fimenquanto
+
 
 fimalgoritmo
