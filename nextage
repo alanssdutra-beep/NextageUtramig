@@ -1,0 +1,135 @@
+algoritmo "QuizMatematicoAvancado"
+// Dono de merda nunhuma > Elessandro REI
+var
+   opcao, nivel, pontos, resposta: inteiro
+   operador : caractere
+   continuar : caractere
+ resultado, numum, numdois : inteiro
+   valor: real
+//ALEXANDRE IS SUKS
+   // Procedimento para mostrar o menu
+procedimento mostrarMenu()
+inicio
+   escreval("+----------------------------------+")
+   escreval("¦             Nextage              ¦")
+   escreval("¦----------------------------------¦")
+   escreval("¦ 1 - Jogar                        ¦")
+   escreval("¦ 2 - Ver Pontuação                ¦")
+   escreval("¦ 3 - Sair                         ¦")
+   escreval("+----------------------------------+")
+   escreva("Escolha uma opção: ")
+   leia(opcao)
+fimprocedimento
+
+// Procedimento para mostrar a pontuação
+procedimento mostrarPontuacao(pontos: inteiro)
+inicio
+   escreval("+------------------------+")
+   escreval("¦    PLACAR ATUAL        ¦")
+   escreval("¦------------------------¦")
+   escreval("¦                        ¦")
+   escreval("¦ ", pontos, " ponto(s)  ¦")
+   escreval("¦                        ¦")
+   escreval("+------------------------+")
+fimprocedimento
+
+
+// Procedimento do jogo
+procedimento jogar()
+inicio
+   escreval("Escolha o nível de dificuldade:")
+   escreval("1 - Fácil (números de 1 a 10)")
+   escreval("2 - Médio (números de 10 a 50)")
+   escreval("3 - Difícil (números de 50 a 100)")
+   escreva("Nível: ")
+   leia(nivel)
+
+   // Gerar números aleatórios conforme o nível
+   escolha nivel
+   caso 1
+      numum <- randi(10) + 1
+      numdois <- randi(10) + 1
+   caso 2
+      numum <- randi(41) + 10
+      numdois <- randi(41) + 10
+   caso 3
+      numum <- randi(51) + 50
+      numdois <- randi(51) + 50
+   outrocaso
+      escreval("Nível inválido. Voltando ao menu.")
+      retorne
+   fimescolha
+
+   // Sorteia a operação
+   escolha randi(4)
+   caso 0
+      operador <- "+"
+      resultado <- numum + numdois
+   caso 1
+      operador <- "-"
+      resultado <- numum - numdois
+   caso 2
+      operador <- "*"
+      resultado <- numum * numdois
+   caso 3
+      enquanto numdois = 0 faca
+         numdois <- randi(10) + 1
+      fimenquanto
+      operador <- "/"
+      resultado <- numum div numdois  // divisão inteira
+   fimescolha
+
+   escreval("Resolva: ", numum, " ", operador, " ", numdois, " = ?")
+   escreva("Sua resposta: ")
+   leia(resposta)
+
+   se resposta = resultado entao
+      escreval("******************************")
+      escreval("*                            *")
+      escreval("*         CORRETO!           *")
+      escreval("*      +1 ponto ganho        *")
+      escreval("*                            *")
+      escreval("******************************")
+      pontos <- pontos + 1
+   senao
+      escreval("******************************")
+      escreval("*                            *")
+      escreval("*          ERRADO!           *")
+      escreval("*     pontos resetados       *")
+      escreval("*                            *")
+      escreval("******************************")
+//minha mutança a cima
+      escreval("A resposta correta era ", resultado)
+   fimse
+fimprocedimento
+
+// Programa principal
+inicio
+   pontos <- 0
+   continuar <- "S"
+
+   enquanto (continuar = "S") ou (continuar = "s") faca
+      mostrarMenu()
+
+      escolha opcao
+      caso 1
+         jogar()
+      caso 2
+         mostrarPontuacao(pontos)
+      caso 3
+         escreval("?? Obrigado por jogar! Até logo.")
+      outrocaso
+         escreval("? Opção inválida. Tente novamente.")
+      fimescolha
+
+      se opcao <> 3 entao
+         escreva("Deseja voltar ao menu? ( S / N ): ")
+         leia(continuar)
+      senao
+         continuar <- "N" // força a saída do laço
+      fimse
+
+   fimenquanto
+
+fimalgoritmo
+
