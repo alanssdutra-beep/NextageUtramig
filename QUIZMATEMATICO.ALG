@@ -119,7 +119,7 @@ fimprocedimento
 procedimento mostrarPontuacao(pontos: inteiro; nome: caractere)
 inicio
    escreval("+----------------------------------+")
-   escreval("¦    PLACAR ATUAL                  ¦")
+   escreval("¦            PLACAR ATUAL          ¦")
    escreval("¦----------------------------------¦")
    escreval("¦                                  ¦")
    escreval("¦", nome, " - ", pontos, " ponto(s)¦")
@@ -217,5 +217,6 @@ inicio
 
 
 fimalgoritmo
+
 
 
