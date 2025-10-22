@@ -1,6 +1,6 @@
 alan
 farlay
-bernado
+Bernado Rodrigues Anunciação
 pedro
 elessandro
 arthu
