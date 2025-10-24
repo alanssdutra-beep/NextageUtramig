@@ -1,5 +1,5 @@
 algoritmo "QuizMatematicoAvancado"
-// Dono de merda nunhuma > Elessandro REI...
+// CEO-> [Elessandro]
 var
    opcao, nivel, pontos, resposta: inteiro
    operador : caractere
