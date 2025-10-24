@@ -1,0 +1,195 @@
+algoritmo "QuizMatematicoAvancado_2.1"
+// Criador Supremo: Elessandro ??
+// Versão 2.1 — Níveis balanceados e visuais aprimorados
+var
+   opcao, nivel, pontos, resposta: inteiro
+   operador, pausas: caractere
+   resultado, numum, numdois: inteiro
+   continuar: logico
+
+procedimento pausar()
+inicio
+   escreval("")
+   escreval("--------------------------------------------")
+   escreval(" Pressione ENTER para continuar...")
+   escreval("--------------------------------------------")
+   leia(pausas)
+fimprocedimento
+
+procedimento mostrarMenu()
+inicio
+   limpatela
+   escreval("+------------------------------------+")
+   escreval("¦        ??  QUIZ MATEMÁTICO  ??      ¦")
+   escreval("¦------------------------------------¦")
+   escreval("¦ 1 ? Iniciar Jogo                   ¦")
+   escreval("¦ 2 ? Ver Pontuação                  ¦")
+   escreval("¦ 3 ? Créditos                       ¦")
+   escreval("¦ 4 ? Sair                           ¦")
+   escreval("+------------------------------------+")
+   escreva("Escolha uma opção: ")
+   leia(opcao)
+fimprocedimento
+
+procedimento mostrarPontuacao(pontos: inteiro)
+inicio
+   limpatela
+   escreval("+------------------------------+")
+   escreval("¦        PLACAR ATUAL          ¦")
+   escreval("¦------------------------------¦")
+   escreval("¦  Pontos acumulados: ", pontos:4, "        ¦")
+   escreval("+------------------------------+")
+   pausar()
+fimprocedimento
+
+procedimento mostrarCreditos()
+inicio
+   limpatela
+   escreval("+------------------------------+")
+   escreval("¦         CRÉDITOS             ¦")
+   escreval("¦------------------------------¦")
+   escreval("¦  Criado por: Elessandro ??   ¦")
+   escreval("¦  Versão: 2.1 — Nextage Quiz  ¦")
+   escreval("¦  Agora com níveis balanceados¦")
+   escreval("+------------------------------+")
+   pausar()
+fimprocedimento
+
+procedimento jogar()
+inicio
+   limpatela
+   escreval("+-----------------------------------+")
+   escreval("¦    SELECIONE O NÍVEL DE DESAFIO   ¦")
+   escreval("¦-----------------------------------¦")
+   escreval("¦ 1 ? Fácil   (1 a 10)              ¦")
+   escreval("¦ 2 ? Médio   (10 a 50)             ¦")
+   escreval("¦ 3 ? Difícil (50 a 100)            ¦")
+   escreval("+-----------------------------------+")
+   escreva("Nível: ")
+   leia(nivel)
+
+   // Gerar números conforme o nível
+   escolha nivel
+      caso 1 // fácil
+         numum <- randi(10) + 1
+         numdois <- randi(10) + 1
+      caso 2 // médio
+         numum <- randi(41) + 10
+         numdois <- randi(41) + 10
+      caso 3 // difícil
+         numum <- randi(51) + 50
+         numdois <- randi(51) + 50
+      outrocaso
+         escreval("? Nível inválido. Retornando ao menu...")
+         pausar()
+         retorne
+   fimescolha
+
+   // Escolher operação conforme dificuldade
+   se nivel = 1 entao
+      // Fácil: só + e -
+      escolha randi(2)
+         caso 0
+            operador <- "+"
+            resultado <- numum + numdois
+         caso 1
+            operador <- "-"
+            resultado <- numum - numdois
+      fimescolha
+   senao
+      se nivel = 2 entao
+         // Médio: +, -, *
+         escolha randi(3)
+            caso 0
+               operador <- "+"
+               resultado <- numum + numdois
+            caso 1
+               operador <- "-"
+               resultado <- numum - numdois
+            caso 2
+               operador <- "*"
+               resultado <- numum * numdois
+         fimescolha
+      senao
+         // Difícil: todas as operações
+         escolha randi(4)
+            caso 0
+               operador <- "+"
+               resultado <- numum + numdois
+            caso 1
+               operador <- "-"
+               resultado <- numum - numdois
+            caso 2
+               operador <- "*"
+               resultado <- numum * numdois
+            caso 3
+               enquanto numdois = 0 faca
+                  numdois <- randi(10) + 1
+               fimenquanto
+               operador <- "/"
+               resultado <- numum div numdois
+         fimescolha
+      fimse
+   fimse
+
+   // Exibir a conta
+   limpatela
+   escreval("+----------------------------------+")
+   escreval("¦          DESAFIO MATH            ¦")
+   escreval("¦----------------------------------¦")
+   escreval("¦  Resolva: ", numum, " ", operador, " ", numdois, " = ?")
+   escreval("+----------------------------------+")
+   escreva("Resposta: ")
+   leia(resposta)
+
+   // Resultado
+   se resposta = resultado entao
+      limpatela
+      escreval("+------------------------------+")
+      escreval("¦        ? CORRETO ?          ¦")
+      escreval("¦------------------------------¦")
+      escreval("¦     +1 ponto conquistado!    ¦")
+      escreval("+------------------------------+")
+      pontos <- pontos + 1
+   senao
+      limpatela
+      escreval("+------------------------------+")
+      escreval("¦         ? ERRADO ?          ¦")
+      escreval("¦------------------------------¦")
+      escreval("¦   A resposta certa era: ", resultado)
+      escreval("¦   Pontos resetados!          ¦")
+      escreval("+------------------------------+")
+      pontos <- 0
+   fimse
+
+   pausar()
+fimprocedimento
+
+inicio
+   pontos <- 0
+   continuar <- verdadeiro
+
+   enquanto continuar faca
+      mostrarMenu()
+
+      escolha opcao
+         caso 1
+            jogar()
+         caso 2
+            mostrarPontuacao(pontos)
+         caso 3
+            mostrarCreditos()
+         caso 4
+            limpatela
+            escreval("+------------------------------+")
+            escreval("¦     OBRIGADO POR JOGAR!      ¦")
+            escreval("¦        VOLTE SEMPRE :)       ¦")
+            escreval("+------------------------------+")
+            continuar <- falso
+         outrocaso
+            escreval("??  Opção inválida, tente de novo!")
+            pausar()
+      fimescolha
+   fimenquanto
+
+fimalgoritmo
