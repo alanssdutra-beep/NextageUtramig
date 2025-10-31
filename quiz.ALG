@@ -61,13 +61,13 @@ fimprocedimento
 
 procedimento salvarPontuacaoArquivo(nome: caractere; pts: inteiro)
 inicio
-   escreval("[DEBUG] Salvando pontuação: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
+   escreval("[DEBUG] Salvando pontuaÃ§Ã£o: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
 fimprocedimento
 
 procedimento mostrarRanking()
 inicio
    escreval("+-------------------------+")
-   escreval("¦        RANKING          ¦")
+   escreval("Â¦        RANKING          Â¦")
    escreval("+-------------------------+")
    escreval("(Implemente leitura do arquivo 'pontuacoes.txt' e ordene por pontos para mostrar o ranking.)")
    escreval("+------------------------+")
@@ -77,15 +77,15 @@ procedimento mostrarMenuPrincipal()
 inicio
    limpaTela()
    escreval("+----------------------------------+")
-   escreval("¦          Nextage alan            ¦")
-   escreval("¦----------------------------------¦")
-   escreval("¦ 1 - Jogar                        ¦")
-   escreval("¦ 2 - Ver Pontuação                ¦")
-   escreval("¦ 3 - Ver Ranking (arquivo)        ¦")
-   escreval("¦ 4 - Registrar/Alterar Jogador    ¦")
-   escreval("¦ 5 - Sair                         ¦")
+   escreval("Â¦          Nextage alan            Â¦")
+   escreval("Â¦----------------------------------Â¦")
+   escreval("Â¦ 1 - Jogar                        Â¦")
+   escreval("Â¦ 2 - Ver PontuaÃ§Ã£o                Â¦")
+   escreval("Â¦ 3 - Ver Ranking (arquivo)        Â¦")
+   escreval("Â¦ 4 - Registrar/Alterar Jogador    Â¦")
+   escreval("Â¦ 5 - Sair                         Â¦")
    escreval("+----------------------------------+")
-   escreva("Escolha uma opção: ")
+   escreva("Escolha uma opÃ§Ã£o: ")
    leia(opcao)
    limpaTela()
 fimprocedimento
@@ -93,11 +93,11 @@ fimprocedimento
 procedimento mostrarPontuacao(pontos: inteiro; nome: caractere)
 inicio
    escreval("+----------------------------------+")
-   escreval("¦            PLACAR ATUAL          ¦")
-   escreval("¦----------------------------------¦")
-   escreval("¦                                  ¦")
-   escreval("¦", nome, " - ", pontos, " ponto(s)¦")
-   escreval("¦                                  ¦")
+   escreval("Â¦            PLACAR ATUAL          Â¦")
+   escreval("Â¦----------------------------------Â¦")
+   escreval("Â¦                                  Â¦")
+   escreval("Â¦", nome, " - ", pontos, " ponto(s)Â¦")
+   escreval("Â¦                                  Â¦")
    escreval("+----------------------------------+")
    limpaTela()
 fimprocedimento
@@ -106,20 +106,20 @@ procedimento jogar()
 var perguntas, acertos, i, tempoResposta: inteiro
 inicio
    limpaTela()
-   escreval("Escolha o nível de dificuldade:")
-   escreval("1 - Fácil (números de 1 a 10)")
-   escreval("2 - Médio (números de 10 a 50)")
-   escreval("3 - Difícil (números de 50 a 100)")
-   escreva("Nível: ")
+   escreval("Escolha o nÃ­vel de dificuldade:")
+   escreval("1 - FÃ¡cil (nÃºmeros de 1 a 10)")
+   escreval("2 - MÃ©dio (nÃºmeros de 10 a 50)")
+   escreval("3 - DifÃ­cil (nÃºmeros de 50 a 100)")
+   escreva("NÃ­vel: ")
    leia(nivel)
    se (nivel < 1) ou (nivel > 3) entao
-      escreval("Nível inválido. Voltando ao menu.")
+      escreval("NÃ­vel invÃ¡lido. Voltando ao menu.")
       retorne
    fimse
 
-   perguntas <- 10 // número de perguntas por rodada
+   perguntas <- 10 // nÃºmero de perguntas por rodada
    acertos <- 0
-   vidas <- 3 // número de vidas por rodada
+   vidas <- 3 // nÃºmero de vidas por rodada
    tempoLimite <- 20 // segundos por pergunta (simulado)
 
    para i de 1 ate perguntas faca
@@ -127,7 +127,7 @@ inicio
       definirOperacao(numum, numdois, operador, resultado)
       escreval("Pergunta ", i, " de ", perguntas, " | Vidas: ", vidas)
       escreval("Resolva: ", numum, " ", operador, " ", numdois, " = ?")
-      escreva("Você tem ", tempoLimite, " segundos. Sua resposta: ")
+      escreva("VocÃª tem ", tempoLimite, " segundos. Sua resposta: ")
 
       escreva("(Digite o tempo que levou para responder em segundos): ")
       leia(tempoResposta)
@@ -135,7 +135,7 @@ inicio
       leia(resposta)
 
       se tempoResposta > tempoLimite entao
-         escreval("Tempo esgotado! Você perdeu uma vida.")
+         escreval("Tempo esgotado! VocÃª perdeu uma vida.")
          vidas <- vidas - 1
       senao
          se resposta = resultado entao
@@ -163,7 +163,7 @@ inicio
       limpaTela()
 
    escreval("Fim da rodada. Acertos nesta rodada: ", acertos, " de ", perguntas)
-   escreval("Pontuação total acumulada: ", pontos)
+   escreval("PontuaÃ§Ã£o total acumulada: ", pontos)
    salvarPontuacaoArquivo(usuario, pontos)
 fimprocedimento
 
@@ -185,10 +185,10 @@ fimprocedimento
       caso 4
          registrarUsuario()
       caso 5
-         escreval("Obrigado por jogar! Até logo.")
+         escreval("Obrigado por jogar! AtÃ© logo.")
          continuar <- "N"
       outrocaso
-         escreval("Opção inválida. Tente novamente.")
+         escreval("OpÃ§Ã£o invÃ¡lida. Tente novamente.")
       fimescolha
 
       se opcao <> 5 entao
