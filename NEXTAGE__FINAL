@@ -19,7 +19,7 @@ inicio
 fimprocedimento
 
 //===========================
-// GERAR NÚMEROS
+// GERAR NÃšMEROS
 //===========================
 procedimento gerarNumeros(nivel: inteiro; var num1: inteiro; var num2: inteiro)
 inicio
@@ -40,7 +40,7 @@ inicio
 fimprocedimento
 
 //===========================
-// DEFINIR OPERAÇÃO
+// DEFINIR OPERAÃ‡ÃƒO
 //===========================
 procedimento definirOperacao(var num1: inteiro; var num2: inteiro; var operador: caractere; var resultado: inteiro)
 inicio
@@ -64,11 +64,11 @@ inicio
 fimprocedimento
 
 //===========================
-// SALVAR PONTUAÇÃO (Simulado)
+// SALVAR PONTUAÃ‡ÃƒO (Simulado)
 //===========================
 procedimento salvarPontuacaoArquivo(nome: caractere; pts: inteiro)
 inicio
-   escreval("[DEBUG] Salvando pontuação: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
+   escreval("[DEBUG] Salvando pontuaÃ§Ã£o: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
 fimprocedimento
 
 //===========================
@@ -77,7 +77,7 @@ fimprocedimento
 procedimento mostrarRanking()
 inicio
    escreval("+--------------------------------------------------------------------------------------------+")
-   escreval("¦                                    RANKING                                                 ¦")
+   escreval("Â¦                                    RANKING                                                 Â¦")
    escreval("+--------------------------------------------------------------------------------------------+")
    escreval("(Implementar leitura do arquivo 'pontuacoes.txt' e ordenar por pontos para mostrar o ranking.)")
    escreval("+--------------------------------------------------------------------------------------------+")
@@ -90,28 +90,28 @@ procedimento mostrarMenuPrincipal()
 inicio
    limpatela()
    escreval("+----------------------------------+")
-   escreval("¦           Nextage alan           ¦")
-   escreval("¦----------------------------------¦")
-   escreval("¦ 1 - Jogar                        ¦")
-   escreval("¦ 2 - Ver Pontuação                ¦")
-   escreval("¦ 3 - Ver Ranking (arquivo)        ¦")
-   escreval("¦ 4 - Registrar/Alterar Jogador    ¦")
-   escreval("¦ 5 - Sair                         ¦")
+   escreval("Â¦           Nextage alan           Â¦")
+   escreval("Â¦----------------------------------Â¦")
+   escreval("Â¦ 1 - Jogar                        Â¦")
+   escreval("Â¦ 2 - Ver PontuaÃ§Ã£o                Â¦")
+   escreval("Â¦ 3 - Ver Ranking (arquivo)        Â¦")
+   escreval("Â¦ 4 - Registrar/Alterar Jogador    Â¦")
+   escreval("Â¦ 5 - Sair                         Â¦")
    escreval("+----------------------------------+")
-   escreva("Escolher uma opção: ")
+   escreva("Escolher uma opÃ§Ã£o: ")
    leia(opcao)
    limpatela()
 fimprocedimento
 
 //===========================
-// MOSTRAR PONTUAÇÃO
+// MOSTRAR PONTUAÃ‡ÃƒO
 //===========================
 procedimento mostrarPontuacao(pontos: inteiro; nome: caractere)
 inicio
    escreval("+------------------------------------+")
-   escreval("¦             PLACAR ATUAL           ¦")
-   escreval("¦------------------------------------¦")
-   escreval("¦ ", nome, " - ", pontos, " ponto(s) ¦")
+   escreval("Â¦             PLACAR ATUAL           Â¦")
+   escreval("Â¦------------------------------------Â¦")
+   escreval("Â¦ ", nome, " - ", pontos, " ponto(s) Â¦")
    escreval("+------------------------------------+")
 fimprocedimento
 
@@ -123,15 +123,15 @@ var
    perguntas, acertos, i, tempoResposta: inteiro
 inicio
    limpatela()
-   escreval("Escolha o nível de dificuldade:")
-   escreval("1 - Fácil (números de 1 a 10)")
-   escreval("2 - Médio (números de 10 a 50)")
-   escreval("3 - Difícil (números de 50 a 100)")
-   escreva("Nível: ")
+   escreval("Escolha o nÃ­vel de dificuldade:")
+   escreval("1 - FÃ¡cil (nÃºmeros de 1 a 10)")
+   escreval("2 - MÃ©dio (nÃºmeros de 10 a 50)")
+   escreval("3 - DifÃ­cil (nÃºmeros de 50 a 100)")
+   escreva("NÃ­vel: ")
    leia(nivel)
 
    se (nivel < 1) ou (nivel > 3) entao
-      escreval("Nível inválido. Voltando ao menu.")
+      escreval("NÃ­vel invÃ¡lido. Voltando ao menu.")
       retorne
    fimse
 
@@ -146,14 +146,14 @@ inicio
 
       escreval("Pergunta ", i, " de ", perguntas, " | Vidas: ", vidas)
       escreval("Resolva: ", numum, " ", operador, " ", numdois, " = ?")
-      escreva("Você tem ", tempoLimite, " segundos.")
+      escreva("VocÃª tem ", tempoLimite, " segundos.")
       escreval(" (Digite sua resposta): ")
       leia(tempoResposta)
       escreva("tem CERTEZA: ")
       leia(resposta)
 
       se tempoResposta > tempoLimite entao
-         escreval("Tempo esgotado! Você perdeu uma vida.")
+         escreval("Tempo esgotado! VocÃª perdeu uma vida.")
          vidas <- vidas - 1
       senao
          se resposta = resultado entao
@@ -177,7 +177,7 @@ inicio
 fimpara
 
 escreval("Fim da rodada. Acertos nesta rodada: ", acertos, " de ", perguntas)
-escreval("Pontuação total acumulada: ", pontos)
+escreval("PontuaÃ§Ã£o total acumulada: ", pontos)
 salvarPontuacaoArquivo(usuario, pontos)
 fimprocedimento
 
@@ -204,10 +204,10 @@ inicio
       caso 4
          registradorUsuario()
       caso 5
-         escreval("Obrigado por jogar! Até logo.")
+         escreval("Obrigado por jogar! AtÃ© logo.")
          continuar <- "N"
       outrocaso
-         escreval("Opção inválida. Tente novamente.")
+         escreval("OpÃ§Ã£o invÃ¡lida. Tente novamente.")
       fimescolha
 
       se opcao >= 5 entao
