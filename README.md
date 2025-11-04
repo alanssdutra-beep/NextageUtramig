@@ -1,6 +1,5 @@
-alan
-farlay
-Bernado Rodrigues Anunciação
-pedro
-elessandro
-arthu
+alan,
+farlay,
+Bernado,
+pedro,
+arthur.
