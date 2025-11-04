@@ -1,0 +1,220 @@
+algoritmo "QuizMatematicoAvancadoSemTipoComVidaETimer"
+
+var
+   opcao, nivel, pontos, resposta: inteiro
+   operador, continuar, usuario: caractere
+   resultado, numum, numdois: inteiro
+   vidas, tempoLimite: inteiro
+
+   //===========================
+   // PROCEDIMENTO REGISTRADOR
+   //===========================
+procedimento registradorUsuario()
+inicio
+   escreva("Digite seu nome de jogador: ")
+   leia(usuario)
+   se usuario = "" entao
+      usuario <- "Jogador"
+   fimse
+fimprocedimento
+
+//===========================
+// GERAR NÚMEROS
+//===========================
+procedimento gerarNumeros(nivel: inteiro; var num1: inteiro; var num2: inteiro)
+inicio
+   escolha nivel
+   caso 1
+      num1 <- randi(10) + 1
+      num2 <- randi(10) + 1
+   caso 2
+      num1 <- randi(41) + 10
+      num2 <- randi(41) + 10
+   caso 3
+      num1 <- randi(51) + 50
+      num2 <- randi(51) + 50
+   outrocaso
+      num1 <- 1
+      num2 <- 1
+   fimescolha
+fimprocedimento
+
+//===========================
+// DEFINIR OPERAÇÃO
+//===========================
+procedimento definirOperacao(var num1: inteiro; var num2: inteiro; var operador: caractere; var resultado: inteiro)
+inicio
+   escolha randi(4)
+   caso 0
+      operador <- "+"
+      resultado <- num1 + num2
+   caso 1
+      operador <- "-"
+      resultado <- num1 - num2
+   caso 2
+      operador <- "*"
+      resultado <- num1 * num2
+   caso 3
+      enquanto num2 = 0 faca
+         num2 <-randi(10) + 1
+      fimenquanto
+      operador <- "/"
+      resultado <- num1 div num2
+   fimescolha
+fimprocedimento
+
+//===========================
+// SALVAR PONTUAÇÃO (Simulado)
+//===========================
+procedimento salvarPontuacaoArquivo(nome: caractere; pts: inteiro)
+inicio
+   escreval("[DEBUG] Salvando pontuação: ", nome, " ; ", pts, " (adaptar para escrever em arquivo)")
+fimprocedimento
+
+//===========================
+// MOSTRAR RANKING (Simulado)
+//===========================
+procedimento mostrarRanking()
+inicio
+   escreval("+--------------------------------------------------------------------------------------------+")
+   escreval("¦                                    RANKING                                                 ¦")
+   escreval("+--------------------------------------------------------------------------------------------+")
+   escreval("(Implementar leitura do arquivo 'pontuacoes.txt' e ordenar por pontos para mostrar o ranking.)")
+   escreval("+--------------------------------------------------------------------------------------------+")
+fimprocedimento
+
+//===========================
+// MENU PRINCIPAL
+//===========================
+procedimento mostrarMenuPrincipal()
+inicio
+   limpatela()
+   escreval("+----------------------------------+")
+   escreval("¦           Nextage alan           ¦")
+   escreval("¦----------------------------------¦")
+   escreval("¦ 1 - Jogar                        ¦")
+   escreval("¦ 2 - Ver Pontuação                ¦")
+   escreval("¦ 3 - Ver Ranking (arquivo)        ¦")
+   escreval("¦ 4 - Registrar/Alterar Jogador    ¦")
+   escreval("¦ 5 - Sair                         ¦")
+   escreval("+----------------------------------+")
+   escreva("Escolher uma opção: ")
+   leia(opcao)
+   limpatela()
+fimprocedimento
+
+//===========================
+// MOSTRAR PONTUAÇÃO
+//===========================
+procedimento mostrarPontuacao(pontos: inteiro; nome: caractere)
+inicio
+   escreval("+------------------------------------+")
+   escreval("¦             PLACAR ATUAL           ¦")
+   escreval("¦------------------------------------¦")
+   escreval("¦ ", nome, " - ", pontos, " ponto(s) ¦")
+   escreval("+------------------------------------+")
+fimprocedimento
+
+//===========================
+// JOGAR
+//===========================
+procedimento jogar()
+var
+   perguntas, acertos, i, tempoResposta: inteiro
+inicio
+   limpatela()
+   escreval("Escolha o nível de dificuldade:")
+   escreval("1 - Fácil (números de 1 a 10)")
+   escreval("2 - Médio (números de 10 a 50)")
+   escreval("3 - Difícil (números de 50 a 100)")
+   escreva("Nível: ")
+   leia(nivel)
+
+   se (nivel < 1) ou (nivel > 3) entao
+      escreval("Nível inválido. Voltando ao menu.")
+      retorne
+   fimse
+
+   perguntas <- 10
+   acertos <- 0
+   vidas <- 3
+   tempoLimite <- 20
+
+   para i de 1 ate perguntas faca
+      gerarNumeros(nivel, numum, numdois)
+      definirOperacao(numum, numdois, operador, resultado)
+
+      escreval("Pergunta ", i, " de ", perguntas, " | Vidas: ", vidas)
+      escreval("Resolva: ", numum, " ", operador, " ", numdois, " = ?")
+      escreva("Você tem ", tempoLimite, " segundos.")
+      escreval(" (Digite sua resposta): ")
+      leia(tempoResposta)
+      escreva("tem CERTEZA: ")
+      leia(resposta)
+
+      se tempoResposta > tempoLimite entao
+         escreval("Tempo esgotado! Você perdeu uma vida.")
+         vidas <- vidas - 1
+      senao
+         se resposta = resultado entao
+            escreval("******************************")
+            escreval("* CORRETO! +1 ponto ganho    *")
+            escreval("******************************")
+            pontos <- pontos + 1
+            acertos <- acertos + 1
+         senao
+            escreval("******************************")
+            escreval("* ERRADO! -1 vida            *")
+            escreval("******************************")
+            escreval("A resposta correta era ", resultado)
+            vidas <- vidas - 1
+         fimse
+      fimse
+
+      se vidas <= 0 entao
+         escreval("Suas vidas acabaram! Fim do jogo.")
+      fimse
+fimpara
+
+escreval("Fim da rodada. Acertos nesta rodada: ", acertos, " de ", perguntas)
+escreval("Pontuação total acumulada: ", pontos)
+salvarPontuacaoArquivo(usuario, pontos)
+fimprocedimento
+
+//===========================
+// PROGRAMA PRINCIPAL
+//===========================
+inicio
+   pontos <- 0
+   usuario <- "Jogador"
+   continuar <- "S"
+
+   registradorUsuario()
+
+   enquanto (continuar = "S") ou (continuar = "s") faca
+      mostrarMenuPrincipal()
+
+      escolha opcao
+      caso 1
+         jogar()
+      caso 2
+         mostrarPontuacao(pontos, usuario)
+      caso 3
+         mostrarRanking()
+      caso 4
+         registradorUsuario()
+      caso 5
+         escreval("Obrigado por jogar! Até logo.")
+         continuar <- "N"
+      outrocaso
+         escreval("Opção inválida. Tente novamente.")
+      fimescolha
+
+      se opcao >= 5 entao
+         escreva("Deseja voltar ao menu? (S/N): ")
+         leia(continuar)
+      senao
+         continuar <- "N"
+      fimse
+   fimenquanto
+fimalgoritmo
