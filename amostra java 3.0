@@ -1,0 +1,179 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ */
+package com.mycompany.amostra1;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author 211605
+ */
+public class Amostra1 {
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        String[] nomeslivros = new String[100];
+        int[] livrosquan = new int[50];
+
+        usuario[] usus = new usuario[100];
+        int numcon = 0;
+        int liv = 0;
+        int opcao;
+
+        do {
+
+            System.out.println("===             Menu           ===");
+            System.out.println("===0- Cadastrar usuario        ===");
+            System.out.println("===1- Cadastrar livro          ===");
+            System.out.println("===2- Listar livro             ===");
+            System.out.println("===3- retirar livros           ===");
+            System.out.println("===4- depositar livro          ===");
+            System.out.println("===5- Buscar livro             ===");
+            System.out.println("===6- Listar usuarios          ===");
+            System.out.println("===7- Sair                     ===");
+            System.out.println("===           Escolha          ===");
+
+            opcao = sc.nextInt();
+            sc.nextLine();
+
+            switch (opcao) {
+                case 0 -> {
+                    usus[numcon] = new usuario();
+                    usus[numcon].info();
+                    numcon++;
+                }
+
+                case 1 -> {
+                    System.out.println("========================================"); 
+                    System.out.println(" Nome do livro  : ");
+                    nomeslivros[liv] = sc.nextLine();
+                    System.out.println(" quantos livros: ");
+                    livrosquan[liv] = sc.nextInt();
+                    liv++;
+
+                    System.out.println("Livro cadastrado com sucesso!");
+                    System.out.println("========================================");
+                }
+
+                case 2 -> {
+
+                    for (int i = 0; i < liv; i++) {
+                        System.out.println("========================================");
+                        System.out.println("Nome livro: " + nomeslivros[i]);
+                        System.out.println("Quantidade: " + livrosquan[i]);
+                        System.out.println("========================================");
+                    }
+                }
+
+                case 3 -> {
+                    System.out.println("========================================"); 
+                    System.out.println("Nome do livro: ");
+                    String contaSaque = sc.nextLine();
+                    System.out.println("========================================"); 
+                    boolean encontrouSaque = false;
+
+                    for (int i = 0; i < liv; i++) {
+
+                        if (nomeslivros[i].equals(contaSaque)) {
+
+                            encontrouSaque = true;
+                            System.out.println("========================================"); 
+                            System.out.println("Quantos voce quer retirar?");
+                            int quan = sc.nextInt();
+                            
+                            if (livrosquan[i] >= quan) {
+
+                                livrosquan[i] = livrosquan[i] - quan;
+                                System.out.println("========================================"); 
+                                System.out.println("Retirada realizada com sucesso!");
+                                System.out.println("Quantidade restante: " + livrosquan[i]);
+                                System.out.println("========================================"); 
+                            } else {
+                                System.out.println("========================================"); 
+                                System.out.println("Quantidade indisponivel!");
+                                System.out.println("========================================"); 
+                            }
+                        }
+                    }
+
+                    if (!encontrouSaque) {
+                        System.out.println("========================================"); 
+                        System.out.println("Livro nao encontrado!");
+                        System.out.println("========================================"); 
+                    }
+                }
+                case 4 -> {
+                    System.out.println("========================================"); 
+                    System.out.println("Nome do livro : ");
+                    String contaDep = sc.nextLine();
+                    System.out.println("========================================"); 
+                    boolean encontrouDep = false;
+
+                    for (int i = 0; i < liv; i++) {
+
+                        if ((nomeslivros[i]).equals(contaDep)) {
+                            System.out.println("========================================"); 
+                            System.out.println("Quantos livros deseja adicionar?");
+                            int quantidade = sc.nextInt();
+                            System.out.println("========================================"); 
+                            livrosquan[i] = livrosquan[i] + quantidade;
+                            
+                            System.out.println("Livros adicionados!");
+                            System.out.println("========================================"); 
+                            encontrouDep = true;
+                        }
+                    }
+
+                    if (!encontrouDep) {
+                        System.out.println("========================================"); 
+                        System.out.println("Livro nao encontrado");
+                        System.out.println("========================================"); 
+                    }
+                }
+                case 5 -> {
+                    System.out.println("========================================"); 
+                    System.out.println("Nome para buscar: ");
+                    String busca = sc.nextLine();
+                    System.out.println("========================================"); 
+                    boolean encontrou = false;
+
+                    for (int i = 0; i < liv; i++) {
+
+                        if (nomeslivros[i].equals(busca)) {
+                            System.out.println("========================================"); 
+                            System.out.println("Livro: " + nomeslivros[i]);
+                            System.out.println("Quantidade: " + livrosquan[i]);
+                            System.out.println("========================================"); 
+                            encontrou = true;
+                        }
+                    }
+
+                    if (!encontrou) {
+                        System.out.println("========================================");
+                        System.out.println("Livro nao encontrado!");
+                        System.out.println("========================================"); 
+                    }
+                }
+                case 6 -> {
+                    for (int i = 0; i < numcon; i++) {
+                    System.out.println("========================================"); 
+                    usus[i].impri();
+                    System.out.println("========================================"); 
+                       
+                    }
+                }
+
+                case 7 ->
+                    
+                    System.out.println("Encerrando...");
+
+                default ->
+                    
+                    System.out.println("Opcao invalida!");
+            }
+
+        } while (opcao != 7 );
+    }
+}
