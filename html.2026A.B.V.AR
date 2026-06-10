@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Cleitin Books</title>
+
+<style>
+
+body{
+    background-color:#54FF9F;
+    font-family:Arial, Helvetica, sans-serif;
+    margin:0;
+    padding:0;
+    color:rgb(0,139,69);
+}
+
+header{
+    background-color:rgb(0,139,69);
+    color:white;
+    text-align:center;
+    padding:25px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.2);
+}
+
+h1{
+    margin:0;
+}
+
+.subtitulo{
+    margin-top:5px;
+}
+
+.lista-integrantes{
+    max-width:700px;
+    margin:30px auto;
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 10px rgba(0,0,0,0.15);
+}
+
+.lista-integrantes h2{
+    text-align:center;
+    color:rgb(0,139,69);
+}
+
+.lista-integrantes p{
+    margin:10px 0;
+}
+
+.container-equipe{
+    display:flex;
+    justify-content:center;
+    flex-wrap:wrap;
+    gap:25px;
+    padding:20px;
+}
+
+.cartao-pessoa{
+    background:white;
+    padding:15px;
+    border-radius:10px;
+    text-align:center;
+    box-shadow:0 3px 10px rgba(0,0,0,0.15);
+    transition:0.3s;
+}
+
+.cartao-pessoa:hover{
+    transform:translateY(-5px);
+}
+
+.cartao-pessoa img{
+    width:200px;
+    height:230px;
+    object-fit:cover;
+    border-radius:8px;
+}
+
+.cartao-pessoa h3{
+    margin-top:10px;
+}
+
+footer{
+    background-color:rgb(0,139,69);
+    color:white;
+    text-align:center;
+    padding:15px;
+    margin-top:30px;
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>📚Livros Books</h1>
+
+    <p >Sistema de Biblioteca Escolar</p>
+
+</header>
+
+<main>
+
+    <div class="lista-integrantes">
+        <h2>Grupo de Desenvolvimento</h2>
+
+        <p><strong>Alessandra:</strong> Ensinou a criar o site.</p>
+
+        <p><strong>William:</strong> deu o nome da biblioteca.</p>
+
+        <p><strong>Bernardo Rodrigues:</strong> desenvolvimento do código Java.</p>
+
+<a href="http://www.google.com/">Google</a> <br>
+
+  <a href="sorveteiria3.html">Página sorveteria</a>
+
+        <p><strong>Farley Vivian:</strong> desenvolvimento do banco de dados MySQL.</p>
+
+        <p><strong>Alan Santos:</strong> colaboração geral no projeto.</p>
+
+        <p><strong>Arthur Hugo:</strong> desenvolvimento do site de apresentação.</p>
+    </div>
+
+    <div class="container-equipe">
+
+        <div class="cartao-pessoa">
+            <img src="Farley.jpg" alt="Farley">
+            <h3>Farley</h3>
+        </div>
+
+        <div class="cartao-pessoa">
+            <img src="Bernardo.jpg" alt="Bernardo">
+            <h3>Bernardo</h3>
+        </div>
+
+        <div class="cartao-pessoa">
+            <img src="alan.jpg" alt="Alan">
+            <h3>Alan</h3>
+        </div>
+
+        <div class="cartao-pessoa">
+            <img src="Arthur.jpg" alt="Arthur">
+            <h3>Arthur</h3>
+        </div>
+
+    </div>
+
+</main>
+
+<footer>
+    <P> Vazio </P>
+</body>
+</html>
